@@ -343,7 +343,7 @@ resource "null_resource" "tiller_tls_certs" {
 }
 
 module "require_executables" {
-  source = "git::https://github.com/gruntwork-io/package-terraform-utilities.git//modules/require-executable?ref=v0.1.0"
+  source = "git::https://github.com/tnn-gruntwork-io/package-terraform-utilities.git//modules/require-executable?ref=v0.1.0"
 
   # We have two items in the list here with conditionals, because terraform does not allow list values in conditionals.
   # TODO: revisit with TF 12
@@ -352,7 +352,7 @@ module "require_executables" {
     var.tiller_tls_gen_method == "kubergrunt" ? "kubectl" : "",
   ]
 
-  error_message = "The __EXECUTABLE_NAME__ binary is not available in your PATH. Install the binary by following the instructions at https://github.com/gruntwork-io/terraform-kubernetes-helm/blob/master/modules/k8s-tiller/README.md#generating-with-kubergrunt, or update your PATH variable to search where you installed __EXECUTABLE_NAME__."
+  error_message = "The __EXECUTABLE_NAME__ binary is not available in your PATH. Install the binary by following the instructions at https://github.com/tnn-gruntwork-io/terraform-kubernetes-helm/blob/master/modules/k8s-tiller/README.md#generating-with-kubergrunt, or update your PATH variable to search where you installed __EXECUTABLE_NAME__."
 }
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -479,5 +479,5 @@ locals {
 
 # Identify the operating system platform we are executing on
 module "os" {
-  source = "git::https://github.com/gruntwork-io/package-terraform-utilities.git//modules/operating-system?ref=v0.1.0"
+  source = "git::https://github.com/tnn-gruntwork-io/package-terraform-utilities.git//modules/operating-system?ref=v0.1.0"
 }

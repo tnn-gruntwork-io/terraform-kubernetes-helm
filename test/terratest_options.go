@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gruntwork-io/terratest/modules/terraform"
+	"github.com/tnn-gruntwork-io/terratest/modules/terraform"
 )
 
 func createExampleK8SNamespaceTerraformOptions(t *testing.T, uniqueID string, templatePath string) *terraform.Options {

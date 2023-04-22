@@ -1,5 +1,5 @@
 [![Maintained by Gruntwork.io](https://img.shields.io/badge/maintained%20by-gruntwork.io-%235849a6.svg)](https://gruntwork.io/?ref=repo_terraform_kubernetes_helm)
-[![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/gruntwork-io/terraform-kubernetes-helm.svg?label=latest)](https://github.com/gruntwork-io/terraform-kubernetes-helm/releases/latest)
+[![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/tnn-gruntwork-io/terraform-kubernetes-helm.svg?label=latest)](https://github.com/tnn-gruntwork-io/terraform-kubernetes-helm/releases/latest)
 ![Terraform Version](https://img.shields.io/badge/tf-%3E%3D0.12.0-blue.svg)
 
 # Tiller Module
@@ -8,7 +8,7 @@
            relative linking correctly.
 -->
 
-**DEPRECATION NOTICE: This repo has been deprecated. The Namespace modules have been moved to [terraform-kubernetes-namespace](https://github.com/gruntwork-io/terraform-kubernetes-namespace). Refer to the [v0.1.0](https://github.com/gruntwork-io/terraform-kubernetes-namespace/releases/v0.1.0) release notes for migration instructions. Please use that module for continued functionality of managing Service Accounts and Namespaces.**
+**DEPRECATION NOTICE: This repo has been deprecated. The Namespace modules have been moved to [terraform-kubernetes-namespace](https://github.com/tnn-gruntwork-io/terraform-kubernetes-namespace). Refer to the [v0.1.0](https://github.com/tnn-gruntwork-io/terraform-kubernetes-namespace/releases/v0.1.0) release notes for migration instructions. Please use that module for continued functionality of managing Service Accounts and Namespaces.**
 
 **NOTE: This is for deploying Tiller, a major component of Helm v2. Tiller has been removed in Helm v3 and is no longer necesssary. You do NOT need this module to use Helm v3.**
 
@@ -16,7 +16,7 @@ This repo contains a Module for deploying Tiller (the server component of Helm) 
 [Terraform](https://www.terraform.io).  This repo is a part of [the Gruntwork Infrastructure as Code
 Library](https://gruntwork.io/infrastructure-as-code-library/), a collection of reusable, battle-tested, production
 ready infrastructure code. Read the [Gruntwork
-Philosophy](https://github.com/gruntwork-io/terraform-kubernetes-helm/blob/master/GRUNTWORK_PHILOSOPHY.md) document to
+Philosophy](https://github.com/tnn-gruntwork-io/terraform-kubernetes-helm/blob/master/GRUNTWORK_PHILOSOPHY.md) document to
 learn more about how Gruntwork builds production grade infrastructure code.
 
 
@@ -26,19 +26,19 @@ The general idea is to:
 
 1. Deploy a Kubernetes cluster. You can use one of the following:
     - [minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/)
-    - [Our GKE module](https://github.com/gruntwork-io/terraform-google-gke/)
-    - [Our EKS module](https://github.com/gruntwork-io/terraform-aws-eks/)
+    - [Our GKE module](https://github.com/tnn-gruntwork-io/terraform-google-gke/)
+    - [Our EKS module](https://github.com/tnn-gruntwork-io/terraform-aws-eks/)
 1. Setup a `kubectl` config context that is configured to authenticate to the deployed cluster.
 1. Install the necessary prerequisites tools:
     - [`helm` client](https://docs.helm.sh/using_helm/#install-helm)
-    - (Optional) [`kubergrunt`](https://github.com/gruntwork-io/kubergrunt#installation)
+    - (Optional) [`kubergrunt`](https://github.com/tnn-gruntwork-io/kubergrunt#installation)
 1. Provision a [`Namespace`](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) and
    [`ServiceAccount`](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) to house the
    Tiller instance.
 1. Deploy Tiller.
 
 You can checkout the [`k8s-tiller-minikube` example
-documentation](https://github.com/gruntwork-io/terraform-kubernetes-helm/tree/master/examples/k8s-tiller-minikube) for
+documentation](https://github.com/tnn-gruntwork-io/terraform-kubernetes-helm/tree/master/examples/k8s-tiller-minikube) for
 detailed instructions on deploying against `minikube`.
 
 
@@ -46,45 +46,45 @@ detailed instructions on deploying against `minikube`.
 
 This repo provides a Gruntwork IaC Package and has the following folder structure:
 
-* [root](https://github.com/gruntwork-io/terraform-kubernetes-helm): The root folder contains an example of how to
-  deploy Tiller using [`kubergrunt`](https://github.com/gruntwork-io/kubergrunt), which implements all the logic for
+* [root](https://github.com/tnn-gruntwork-io/terraform-kubernetes-helm): The root folder contains an example of how to
+  deploy Tiller using [`kubergrunt`](https://github.com/tnn-gruntwork-io/kubergrunt), which implements all the logic for
   deploying Tiller with all the security best practices.
-* [modules](https://github.com/gruntwork-io/terraform-kubernetes-helm/tree/master/modules): This folder contains the
+* [modules](https://github.com/tnn-gruntwork-io/terraform-kubernetes-helm/tree/master/modules): This folder contains the
   main implementation code for this Module, broken down into multiple standalone Submodules.
 
   The primary module is:
 
-    * [k8s-tiller](https://github.com/gruntwork-io/terraform-kubernetes-helm/tree/master/modules/k8s-tiller): Deploy
+    * [k8s-tiller](https://github.com/tnn-gruntwork-io/terraform-kubernetes-helm/tree/master/modules/k8s-tiller): Deploy
       Tiller with all the security features turned on. This includes using `Secrets` for storing state and enabling TLS
       verification.
 
     The deployed Tiller requires TLS certificate key pairs to operate. Additionally, clients will each need to their
     own TLS certificate key pairs to authenticate to the deployed Tiller instance. This is based on [kubergrunt model of
-    deploying helm](https://github.com/gruntwork-io/kubergrunt/blob/master/HELM_GUIDE.md).
+    deploying helm](https://github.com/tnn-gruntwork-io/kubergrunt/blob/master/HELM_GUIDE.md).
 
     There are also several supporting modules that help with setting up the deployment:
 
-    * [k8s-namespace](https://github.com/gruntwork-io/terraform-kubernetes-helm/tree/master/modules/k8s-namespace):
+    * [k8s-namespace](https://github.com/tnn-gruntwork-io/terraform-kubernetes-helm/tree/master/modules/k8s-namespace):
       Provision a Kubernetes `Namespace` with a default set of RBAC roles.
-    * [k8s-namespace-roles](https://github.com/gruntwork-io/terraform-kubernetes-helm/tree/master/modules/k8s-namespace-roles):
+    * [k8s-namespace-roles](https://github.com/tnn-gruntwork-io/terraform-kubernetes-helm/tree/master/modules/k8s-namespace-roles):
       Provision a default set of RBAC roles to use in a `Namespace`.
-    * [k8s-service-account](https://github.com/gruntwork-io/terraform-kubernetes-helm/tree/master/modules/k8s-service-account):
+    * [k8s-service-account](https://github.com/tnn-gruntwork-io/terraform-kubernetes-helm/tree/master/modules/k8s-service-account):
       Provision a Kubernetes `ServiceAccount`.
-    * [k8s-tiller-tls-certs](https://github.com/gruntwork-io/terraform-kubernetes-helm/tree/master/modules/k8s-tiller-tls-certs):
+    * [k8s-tiller-tls-certs](https://github.com/tnn-gruntwork-io/terraform-kubernetes-helm/tree/master/modules/k8s-tiller-tls-certs):
       Generate a TLS Certificate Authority (CA) and using that, generate signed TLS certificate key pairs that can be
       used for TLS verification of Tiller. The certs are managed on the cluster using Kubernetes `Secrets`. **NOTE**:
       This module uses the `tls` provider, which means the generated certificate key pairs are stored in plain text in
       the Terraform state file. If you are sensitive to secrets in Terraform state, consider using `kubergrunt` for TLS
       management.
-    * [k8s-helm-client-tls-certs](https://github.com/gruntwork-io/terraform-kubernetes-helm/tree/master/modules/k8s-helm-client-tls-certs):
+    * [k8s-helm-client-tls-certs](https://github.com/tnn-gruntwork-io/terraform-kubernetes-helm/tree/master/modules/k8s-helm-client-tls-certs):
       Generate a signed TLS certificate key pair from a previously generated CA certificate key pair. This TLS key pair
       can be used to authenticate a helm client to access a deployed Tiller instance. **NOTE**: This module uses the
       `tls` provider, which means the generated certificate key pairs are stored in plain text in the Terraform state
       file. If you are sensitive to secrets in Terraform state, consider using `kubergrunt` for TLS management.
 
-* [examples](https://github.com/gruntwork-io/terraform-kubernetes-helm/tree/master/examples): This folder contains
+* [examples](https://github.com/tnn-gruntwork-io/terraform-kubernetes-helm/tree/master/examples): This folder contains
   examples of how to use the Submodules.
-* [test](https://github.com/gruntwork-io/terraform-kubernetes-helm/tree/master/test): Automated tests for the Submodules
+* [test](https://github.com/tnn-gruntwork-io/terraform-kubernetes-helm/tree/master/test): Automated tests for the Submodules
   and examples.
 
 
@@ -106,7 +106,7 @@ repository that contains various applications such as Jenkins, MySQL, and Consul
 under the hood for the Kubernetes modules in this package.
 
 For a background on Helm and its security model, check out [our Helm Guide
-document](https://github.com/gruntwork-io/kubergrunt/blob/master/HELM_GUIDE.md).
+document](https://github.com/tnn-gruntwork-io/kubergrunt/blob/master/HELM_GUIDE.md).
 
 <!-- TODO: ## What parts of the Production Grade Infrastructure Checklist are covered by this Module? -->
 
@@ -142,13 +142,13 @@ Gruntwork can help with:
 ## How do I contribute to this Module?
 
 Contributions are very welcome! Check out the [Contribution
-Guidelines](https://github.com/gruntwork-io/terraform-kubernetes-helm/blob/master/CONTRIBUTING.md) for instructions.
+Guidelines](https://github.com/tnn-gruntwork-io/terraform-kubernetes-helm/blob/master/CONTRIBUTING.md) for instructions.
 
 
 ## How is this Module versioned?
 
 This Module follows the principles of [Semantic Versioning](http://semver.org/). You can find each new release, along
-with the changelog, in the [Releases Page](https://github.com/gruntwork-io/terraform-kubernetes-helm/releases).
+with the changelog, in the [Releases Page](https://github.com/tnn-gruntwork-io/terraform-kubernetes-helm/releases).
 
 During initial development, the major version will be 0 (e.g., `0.x.y`), which indicates the code does not yet have a
 stable API. Once we hit `1.0.0`, we will make every effort to maintain a backwards compatible API and use the MAJOR,
@@ -157,7 +157,7 @@ MINOR, and PATCH versions on each release to indicate any incompatibilities.
 
 ## License
 
-Please see [LICENSE](https://github.com/gruntwork-io/terraform-kubernetes-helm/blob/master/LICENSE) for how the code in
+Please see [LICENSE](https://github.com/tnn-gruntwork-io/terraform-kubernetes-helm/blob/master/LICENSE) for how the code in
 this repo is licensed.
 
 Copyright &copy; 2019 Gruntwork, Inc.

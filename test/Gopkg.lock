@@ -207,7 +207,7 @@
 
 [[projects]]
   digest = "1:b17934d012a71aa0367870f2a0d0a7b117cb823768295b0e9e1b6e39fab6ebbd"
-  name = "github.com/gruntwork-io/gruntwork-cli"
+  name = "github.com/tnn-gruntwork-io/gruntwork-cli"
   packages = ["errors"]
   pruneopts = "UT"
   revision = "6a2163138f3d10377f313428e7e367b0a6c0c1c9"
@@ -215,7 +215,7 @@
 
 [[projects]]
   digest = "1:0d42a552cd449981e0c2723e2b23746178bc11c7e2a0537dbb712870515bcd6c"
-  name = "github.com/gruntwork-io/terratest"
+  name = "github.com/tnn-gruntwork-io/terratest"
   packages = [
     "modules/aws",
     "modules/collections",
@@ -629,12 +629,12 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/gruntwork-io/terratest/modules/k8s",
-    "github.com/gruntwork-io/terratest/modules/logger",
-    "github.com/gruntwork-io/terratest/modules/random",
-    "github.com/gruntwork-io/terratest/modules/shell",
-    "github.com/gruntwork-io/terratest/modules/terraform",
-    "github.com/gruntwork-io/terratest/modules/test-structure",
+    "github.com/tnn-gruntwork-io/terratest/modules/k8s",
+    "github.com/tnn-gruntwork-io/terratest/modules/logger",
+    "github.com/tnn-gruntwork-io/terratest/modules/random",
+    "github.com/tnn-gruntwork-io/terratest/modules/shell",
+    "github.com/tnn-gruntwork-io/terratest/modules/terraform",
+    "github.com/tnn-gruntwork-io/terratest/modules/test-structure",
     "github.com/stretchr/testify/assert",
     "github.com/stretchr/testify/require",
     "k8s.io/api/authorization/v1",
