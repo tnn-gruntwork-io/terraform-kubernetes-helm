@@ -18,14 +18,14 @@ repository will be updated with migration instructions to help smooth out the up
 
 ## How do you use this module?
 
-* See the [root README](https://github.com/gruntwork-io/terraform-kubernetes-helm/blob/master/README.md) for
+* See the [root README](https://github.com/tnn-gruntwork-io/terraform-kubernetes-helm/blob/master/README.md) for
   instructions on using Terraform modules.
 * This module uses [the `kubernetes` provider](https://www.terraform.io/docs/providers/kubernetes/index.html).
-* See [the example at the root of the repo](https://github.com/gruntwork-io/terraform-kubernetes-helm) for example
+* See [the example at the root of the repo](https://github.com/tnn-gruntwork-io/terraform-kubernetes-helm) for example
   usage.
-* See [variables.tf](https://github.com/gruntwork-io/terraform-kubernetes-helm/blob/master/modules/k8s-tiller/variables.tf)
+* See [variables.tf](https://github.com/tnn-gruntwork-io/terraform-kubernetes-helm/blob/master/modules/k8s-tiller/variables.tf)
   for all the variables you can set on this module.
-* See [outputs.tf](https://github.com/gruntwork-io/terraform-kubernetes-helm/blob/master/modules/k8s-tiller/outputs.tf)
+* See [outputs.tf](https://github.com/tnn-gruntwork-io/terraform-kubernetes-helm/blob/master/modules/k8s-tiller/outputs.tf)
   for all the variables that are outputed by this module.
 
 
@@ -38,7 +38,7 @@ Kubernetes YAML files from the packaged release, and then apply the generated Ku
 the cluster.
 
 You can read more about Helm, Tiller, and their security model in our [Helm
-guide](https://github.com/gruntwork-io/kubergrunt/blob/master/HELM_GUIDE.md).
+guide](https://github.com/tnn-gruntwork-io/kubergrunt/blob/master/HELM_GUIDE.md).
 
 This module ensures all the security features provided by Helm are employed by:
 
@@ -57,20 +57,20 @@ installs to only manage resources in particular namespaces, or even restrict wha
 The specific roles to use for Tiller depends on your infrastructure needs. At a minimum, Tiller needs enough permissions
 to manage its own metadata, and permissions to deploy resources in the target Namespace. We provide minimal permission
 sets that you can use in the [k8s-namespace-roles
-module](https://github.com/gruntwork-io/terraform-kubernetes-helm/tree/master/modules/k8s-namespace-roles). You can
+module](https://github.com/tnn-gruntwork-io/terraform-kubernetes-helm/tree/master/modules/k8s-namespace-roles). You can
 associate the `rbac_tiller_metadata_access_role` and `rbac_tiller_resource_access_role` roles created by the module to
 the Tiller `ServiceAccount` to grant those permissions. For example, the following terraform code will create these
 roles in the `kube-system` `Namespace` and attach it to a new `ServiceAccount` that you can then use in this module:
 
 ```hcl
 module "namespace_roles" {
-  source = "git::https://github.com/gruntwork-io/terraform-kubernetes-helm.git//modules/k8s-namespace-roles?ref=v0.3.0"
+  source = "git::https://github.com/tnn-gruntwork-io/terraform-kubernetes-helm.git//modules/k8s-namespace-roles?ref=v0.3.0"
 
   namespace    = "kube-system"
 }
 
 module "tiller_service_account" {
-  source = "git::https://github.com/gruntwork-io/terraform-kubernetes-helm.git//modules/k8s-service-account?ref=v0.3.0"
+  source = "git::https://github.com/tnn-gruntwork-io/terraform-kubernetes-helm.git//modules/k8s-service-account?ref=v0.3.0"
 
   name           = "tiller"
   namespace      = "kube-system"
@@ -162,7 +162,7 @@ are sensitive to storing secrets in your Terraform state file, consider using `k
 TLS certificate. See [Generating with kubergrunt](#generating-with-kubergrunt) for more details.**
 
 This method of configuring the TLS certs utilizes the [k8s-tiller-tls-certs
-module](https://github.com/gruntwork-io/terraform-kubernetes-helm/tree/master/modules/k8s-tiller-tls-certs) to generate
+module](https://github.com/tnn-gruntwork-io/terraform-kubernetes-helm/tree/master/modules/k8s-tiller-tls-certs) to generate
 the TLS CA, and a signed certificate key pair for Tiller using that CA. To use this method, set `tiller_tls_gen_method`
 to `"provider"`.
 
@@ -183,12 +183,12 @@ https://www.terraform.io/docs/providers/tls/r/cert_request.html#common_name for 
 #### Generating with kubergrunt
 
 **WARNING: This method requires the `kubergrunt` and `kubectl` binaries to be installed and available. See
-https://github.com/gruntwork-io/kubergrunt for installation instructions for `kubergrunt`, and
+https://github.com/tnn-gruntwork-io/kubergrunt for installation instructions for `kubergrunt`, and
 https://kubernetes.io/docs/tasks/tools/install-kubectl/ for installation instructions for `kubectl`.**
 
 **NOTE: You must have kubergrunt version >=0.5.8**
 
-This method of configuring the TLS certs utilizes [kubergrunt](https://github.com/gruntwork-io/kubergrunt) to generate
+This method of configuring the TLS certs utilizes [kubergrunt](https://github.com/tnn-gruntwork-io/kubergrunt) to generate
 the TLS CA, and a signed certificate key pair for Tiller using that CA. To use this method, set `tiller_tls_gen_method`
 to `"kubergrunt"`.
 
@@ -223,5 +223,5 @@ In order to access Tiller, you will typically need to generate additional signed
 certs. If you used the direct method, you will have to rely on your certificate provider to sign additional client
 certificates. For ther other two methods, you can take a look at [How do you use the generated TLS certs to sign
 additional
-certificates](https://github.com/gruntwork-io/terraform-kubernetes-helm/tree/master/modules/k8s-tiller-tls-certs/README.md#how-do-you-use-the-generated-tls-certs-to-sign-additional-certificates)
+certificates](https://github.com/tnn-gruntwork-io/terraform-kubernetes-helm/tree/master/modules/k8s-tiller-tls-certs/README.md#how-do-you-use-the-generated-tls-certs-to-sign-additional-certificates)
 for information on how sign additional certificates using the generated TLS CA.

@@ -7,7 +7,7 @@ how you can setup `minikube` and use the modules in this repo to deploy Tiller o
 
 ## Background
 
-We strongly recommend reading [our guide on Helm](https://github.com/gruntwork-io/kubergrunt/blob/master/HELM_GUIDE.md)
+We strongly recommend reading [our guide on Helm](https://github.com/tnn-gruntwork-io/kubergrunt/blob/master/HELM_GUIDE.md)
 before continuing with this guide for a background on Helm, Tiller, and the security model backing it.
 
 
@@ -52,7 +52,7 @@ utilities on the system `PATH`. Here are the installation guide for each:
 
 1. [`terraform`](https://learn.hashicorp.com/terraform/getting-started/install.html)
 1. [`helm` client](https://docs.helm.sh/using_helm/#installing-helm)
-1. [`kubergrunt`](https://github.com/gruntwork-io/kubergrunt#installation), minimum version: v0.3.6
+1. [`kubergrunt`](https://github.com/tnn-gruntwork-io/kubergrunt#installation), minimum version: v0.3.6
 
 Make sure the binaries are discoverable in your `PATH` variable. See [this stackoverflow
 post](https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux-unix) for instructions on
@@ -67,7 +67,7 @@ Now that we have a working Kubernetes cluster, and all the prerequisite tools ar
 Tiller! To deploy Tiller, we will use the example Terraform code in this folder:
 
 1. If you haven't already, clone this repo:
-    - `git clone https://github.com/gruntwork-io/terraform-kubernetes-helm.git`
+    - `git clone https://github.com/tnn-gruntwork-io/terraform-kubernetes-helm.git`
 1. Make sure you are in the example folder:
     - `cd terraform-kubernetes-helm/examples/8s-tiller-kubergrunt-minikube`
 1. Initialize terraform:
